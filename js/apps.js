@@ -44,7 +44,7 @@ function checkAvailability (selectedProName) {
 function pickAPro(){
   do {
     var IMg1 = Math.round(Math.random() * (arrayOfpro.length - 1))
-    var IMg1name = arrayOfpro[IMg1].name;    
+    var IMg1name = arrayOfpro[IMg1].name;
   } while (checkAvailability(IMg1name));
   
   do {
