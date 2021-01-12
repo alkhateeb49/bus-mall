@@ -28,6 +28,17 @@ function Product(name,image){
 
     arrayOfpro.push(this);
 }
+function storeData() {   
+
+  localStorage.setItem('order', JSON.stringify(arrayOfpro));
+
+}
+function checkAndRestore() {
+    
+  if (localStorage.length > 0 ) {
+    arrayOfpro = JSON.parse(localStorage.getItem('order')); 
+  }
+}
 
 function checkAvailability (selectedProName) {
 
@@ -85,7 +96,6 @@ function render(fimg,simg,timg){
 
 function count(event) {
     var targetId = event.target.id;
-
     if (trial !== 0) {
       if (targetId === 'img1' || targetId === 'img2' || targetId === 'img3' ) {
         var objectIndicator = event.target.getAttribute('src');
@@ -96,13 +106,26 @@ function count(event) {
     } else {
     image_container.removeEventListener('click',count);
     console.log(arrayOfpro);
-    var btn = document.createElement("BUTTON"); 
+    var btn = document.createElement("BUTTON");
     btn.textContent="Show Result";
     btn.id ='button';
     bts.appendChild(btn);
     btn.addEventListener('click',print);
 
+    var btn2 = document.createElement("BUTTON");
+    btn2.textContent="Clear Local Storage";
+    btn2.id ='button2';
+    bts.appendChild(btn2);
+    btn2.addEventListener('click',clear);
+
     }
+}
+
+function clear(event){
+    localStorage.clear();
+    arrayOfpro = [];
+    renderChart();
+    // location.reload();
 }
 
 function checkPro(objectIndicator) {
@@ -125,6 +148,7 @@ function print(event){
     }
     listS.appendChild(ul);
     renderChart();
+    storeData();
 
 
 }
@@ -155,20 +179,49 @@ function renderChart() {
         label: '# of Product Clicks',
         data: arrayOfProCount, // array of values (count for each goat when it was clicked)
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+          'rgba(245, 0, 212, 0.2)',
+ 
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 99, 132, 1)',
         ],
         borderWidth: 1
       },
@@ -176,20 +229,50 @@ function renderChart() {
         label: 'Time shown for the Products',
         data: arrayOfProsShown, // array of values (count for each goat when it was clicked)
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
           'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(54, 162, 235, 1)',
+
         ],
         borderWidth: 1
       }]
@@ -232,3 +315,4 @@ new Product('Wine Glass', 'wine-glass.jpg');
 
 pickAPro();
 image_container.addEventListener('click',count);
+checkAndRestore();
