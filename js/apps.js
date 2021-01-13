@@ -169,7 +169,7 @@ function renderChart() {
     arrayOfProsShown.push(arrayOfpro[index].view);
     
   }
- 
+  // chart
   var myChart = new Chart(proChart, {
     type: 'bar',
     data: {
